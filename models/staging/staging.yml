@@ -1,5 +1,0 @@
-version: 2
-
-models:
-  - name: int_sales_margin
-    description: margin and purchase cost added table
