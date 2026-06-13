@@ -9,6 +9,12 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: Sale data at Greenweez
+        config:
+          freshness:
+            error_after:
+              count: 9000
+              period: day
+          loaded_at_field: "CAST(date_date AS TIMESTAMP)"
         columns:
           - name: date_date
             description: Date of the order in date format
