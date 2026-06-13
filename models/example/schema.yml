@@ -1,21 +1,39 @@
 
 version: 2
 
-models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
+sources:
+  - name: raw
+    schema: raw_gz_data
+    description: Dataset that contains tables
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: Sale data at Greenweez
+        columns:
+          - name: date_date
+            description: Date of the order in date format
             tests:
-                - unique
-                - not_null
-
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
+              - not_null
+          - name: orders_id
+            description: Id of the order
             tests:
-                - unique
-                - not_null
+              - not_null
+      - name: products
+        identifier: raw_gz_product
+        description: Product catalogue at Greenweez
+        columns:
+          - name: products_id
+            description: Id of the product
+            tests:
+              - not_null
+              - unique
+      - name: ship
+        identifier: raw_gz_ship
+        description: Shipment information of each order
+        columns:
+          - name: orders_id
+            description: Id of the order
+            tests:
+              - not_null
+              - unique
+              
