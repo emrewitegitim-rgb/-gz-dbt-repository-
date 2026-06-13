@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: int_sales_margin
+  - name: int_orders_margin
+  - name: int_orders_operational
